@@ -18,7 +18,7 @@ public class ClientController {
 
 //    endpoint untuk create client
     @RequestMapping(method = RequestMethod.POST)
-    public Client inserClient(@RequestBody Client client){
+    public Client insertClient(@RequestBody Client client){
         return clientService.insertClient(client);
     }
 

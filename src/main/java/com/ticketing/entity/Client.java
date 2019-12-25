@@ -26,6 +26,9 @@ public class Client {
     @Column(length = 10000000)
     private String photo;
 
+    @Column(nullable = false)
+    private boolean enabled;
+
     @Column(nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastLogin;
@@ -36,6 +39,13 @@ public class Client {
             mappedBy = "client"
     )
     private List<Request> requestList = new ArrayList<>();
+
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            mappedBy = "client"
+    )
+    private List<Authority> authorityList = new ArrayList<>();
 
     public Client(){
 
@@ -71,6 +81,14 @@ public class Client {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getPhoto() {

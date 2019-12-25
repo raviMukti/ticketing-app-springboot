@@ -22,10 +22,10 @@ public class Request {
     private Date solveDate;
 
     @OneToOne
-    @JoinColumn(name = "ticketId", nullable = false)
+    @JoinColumn(name = "ticketId", nullable = false, foreignKey = @ForeignKey(name = "fk_request_ticket"))
     private Ticket ticket;
 
     @ManyToOne
-    @JoinColumn(name = "userId", nullable = false)
+    @JoinColumn(name = "clientId", nullable = false, foreignKey = @ForeignKey(name = "fk_request_client"))
     private Client client;
 }
